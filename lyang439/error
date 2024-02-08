@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/users/lyang439/744_group7_a1/lyang439/part3.py", line 15, in <module>
+    .master("spark://10.10.1.1:7077")
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/session.py", line 477, in getOrCreate
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip/pyspark/context.py", line 512, in getOrCreate
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip/pyspark/context.py", line 212, in __init__
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip/pyspark/context.py", line 287, in _do_init
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/pyspark.zip/pyspark/context.py", line 417, in _initialize_context
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1588, in __call__
+  File "/users/lyang439/.local/lib/python3.7/site-packages/pyspark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: java.lang.IllegalArgumentException: requirement failed: Can only call getServletHandlers on a running MetricsSystem
+	at scala.Predef$.require(Predef.scala:281)
+	at org.apache.spark.metrics.MetricsSystem.getServletHandlers(MetricsSystem.scala:89)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:654)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.lang.Thread.run(Thread.java:750)
+
