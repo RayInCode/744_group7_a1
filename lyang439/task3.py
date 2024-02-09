@@ -4,7 +4,7 @@ from pyspark.sql.functions import col, lit, sum as _sum, collect_list, size, exp
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType
 
 if __name__ == "__main__":
-    spark = (SparkSession.builder.appName("part3_benchmark")
+    spark = (SparkSession.builder.appName("task3_persist")
             .config("spark.driver.memory", "30g")  # Sets the Spark driver memory to 30GB
             .config("spark.executor.memory", "30g")  # Sets the Spark executor memory to 30GB
             .config("spark.executor.cores", "5")  # Sets the number of cores for each executor to 5
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     
     # Initialize page ranks
     pages = df.select("page").distinct()
-    links = df.groupBy("page").agg(collect_list("link").alias("links"))
+    links = df.groupBy("page").agg(collect_list("link").alias("links")).cache()
     ranks = pages.select("page", lit(1).alias("rank"))
     
     # Calculate PageRank
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     ranks = ranks.orderBy(col("rank").desc())
     
     # Save results to HDFS
-    ranks.write.format("csv").mode("overwrite").save("hdfs://10.10.1.1:9000/data/part3_benchmark_res")
+    ranks.write.format("csv").mode("overwrite").save("hdfs://10.10.1.1:9000/data/task3_res")
     
     spark.stop()
 

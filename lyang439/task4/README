@@ -1,0 +1,2 @@
+We try to kill the worker and sync the memory at 25% and 75% of application's lifttime by hand according to the dynamic info come out of console.
+So in the run.sh in this direct, we just list the command we used to trigger the failure.
